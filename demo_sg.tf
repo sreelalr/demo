@@ -1,22 +1,22 @@
 resource "aws_security_group" "jenkins_sg" {
   name        = "jenkins_sg"
   description = "Allow Jenkins Traffic"
-  vpc_id      = var.vpc_id
+  vpc_id      = module.vpc.default_vpc_id
 
   ingress {
-    description      = "Allow from Personal CIDR block"
-    from_port        = 8080
-    to_port          = 8080
-    protocol         = "tcp"
-    cidr_blocks      = [var.cidr_block]
+    description = "Allow from Personal CIDR block"
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    description      = "Allow SSH from Personal CIDR block"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = [var.cidr_block]
+    description = "Allow SSH from Personal CIDR block"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {

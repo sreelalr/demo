@@ -16,5 +16,5 @@ data "aws_ami" "amazon_linux" {
     values = ["ebs"]
   }
 
-  owners = ["sreelalr"] 
+  owners = ["amazon"]
 }

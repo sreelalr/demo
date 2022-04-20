@@ -5,7 +5,7 @@ terraform {
       version = "4.9.0"
     }
   }
-}  
+}
 
 provider "aws" {
   region  = var.region
@@ -22,7 +22,7 @@ resource "aws_instance" "web" {
   instance_type   = var.instance_type
   key_name        = aws_key_pair.terraform-keys.key_name
   security_groups = [aws_security_group.jenkins_sg.name]
-  user_data       = "${file("install_jenkins.sh")}"
+  user_data       = file("install_jenkins.sh")
   tags = {
     Name = "Jenkins"
   }
